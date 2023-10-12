@@ -27,7 +27,19 @@ const getDataFromDb = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+const deleteData = catchAsync(async (req: Request, res: Response) => {
+  const result = await BlogService.deleteData(req.params.id);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Blog deleted successfully',
+    data: result,
+  });
+});
+
 export const BlogController = {
   insertIntoDb,
   getDataFromDb,
+  deleteData,
 };

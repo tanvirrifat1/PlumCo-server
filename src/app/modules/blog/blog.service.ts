@@ -1,4 +1,4 @@
-import { Blog, FeedBack } from '@prisma/client';
+import { Blog } from '@prisma/client';
 import prisma from '../../../shared/prisma';
 
 const insertIntoDb = async (data: Blog): Promise<Blog> => {
@@ -18,10 +18,10 @@ const getDataFromDb = async (): Promise<Blog[]> => {
   return result;
 };
 
-const deleteData = async (id: string): Promise<FeedBack | null> => {
-  const result = await prisma.feedBack.delete({
+const deleteData = async (id: string): Promise<Blog | null> => {
+  const result = await prisma.blog.delete({
     where: { id },
-    include: { Service: true, User: true },
+    include: { author: true },
   });
 
   return result;
