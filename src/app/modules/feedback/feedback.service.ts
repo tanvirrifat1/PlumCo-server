@@ -18,4 +18,13 @@ const getDataFromDb = async (): Promise<FeedBack[]> => {
   return result;
 };
 
-export const FeedBackService = { insertIntoDb, getDataFromDb };
+const deleteData = async (id: string): Promise<FeedBack | null> => {
+  const result = await prisma.feedBack.delete({
+    where: { id },
+    include: { Service: true, User: true },
+  });
+
+  return result;
+};
+
+export const FeedBackService = { insertIntoDb, getDataFromDb, deleteData };

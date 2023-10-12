@@ -27,7 +27,19 @@ const getDataFromDb = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+const deleteData = catchAsync(async (req: Request, res: Response) => {
+  const result = await FeedBackService.deleteData(req.params.id);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'FeedBack delete successfully',
+    data: result,
+  });
+});
+
 export const FeedBackController = {
   insertIntoDb,
   getDataFromDb,
+  deleteData,
 };
