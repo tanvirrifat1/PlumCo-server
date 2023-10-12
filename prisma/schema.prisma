@@ -17,7 +17,7 @@ model User {
   role         String
   contactNo    String
   fullName     String
-  location     String
+  address      String
   profileImage String?
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
