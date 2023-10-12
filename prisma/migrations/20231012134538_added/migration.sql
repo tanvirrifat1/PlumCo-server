@@ -1,25 +1,8 @@
-/*
-  Warnings:
+-- CreateEnum
+CREATE TYPE "Role" AS ENUM ('user', 'admin', 'super_admin');
 
-  - You are about to drop the `review` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `service` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `user` table. If the table is not empty, all the data it contains will be lost.
-
-*/
--- DropForeignKey
-ALTER TABLE "review" DROP CONSTRAINT "review_serviceId_fkey";
-
--- DropForeignKey
-ALTER TABLE "review" DROP CONSTRAINT "review_userId_fkey";
-
--- DropTable
-DROP TABLE "review";
-
--- DropTable
-DROP TABLE "service";
-
--- DropTable
-DROP TABLE "user";
+-- CreateEnum
+CREATE TYPE "BookingStatus" AS ENUM ('pending', 'approved', 'cancel');
 
 -- CreateTable
 CREATE TABLE "users" (
@@ -57,8 +40,23 @@ CREATE TABLE "reviews" (
     "serviceId" TEXT NOT NULL,
     "review" TEXT NOT NULL,
     "rating" INTEGER NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "reviews_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "bookings" (
+    "id" TEXT NOT NULL,
+    "userId" TEXT NOT NULL,
+    "serviceId" TEXT NOT NULL,
+    "date" TIMESTAMP(3) NOT NULL,
+    "status" "BookingStatus" DEFAULT 'pending',
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "bookings_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex
@@ -69,3 +67,9 @@ ALTER TABLE "reviews" ADD CONSTRAINT "reviews_userId_fkey" FOREIGN KEY ("userId"
 
 -- AddForeignKey
 ALTER TABLE "reviews" ADD CONSTRAINT "reviews_serviceId_fkey" FOREIGN KEY ("serviceId") REFERENCES "services"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "bookings" ADD CONSTRAINT "bookings_userId_fkey" FOREIGN KEY ("userId") REFERENCES "users"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "bookings" ADD CONSTRAINT "bookings_serviceId_fkey" FOREIGN KEY ("serviceId") REFERENCES "services"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

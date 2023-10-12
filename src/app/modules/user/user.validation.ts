@@ -8,9 +8,7 @@ const create = z.object({
     password: z.string({
       required_error: 'password is required',
     }),
-    role: z.string({
-      required_error: 'role is required',
-    }),
+
     contactNo: z.string({
       required_error: 'contactNo is required',
     }),
@@ -28,7 +26,7 @@ const update = z.object({
   body: z.object({
     email: z.string().email().optional(),
     password: z.string().optional(),
-    role: z.string().optional(),
+
     contactNo: z.string().optional(),
     fullName: z.string().optional(),
     location: z.string().optional(),
