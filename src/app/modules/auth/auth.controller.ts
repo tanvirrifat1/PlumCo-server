@@ -15,4 +15,17 @@ const insertIntoDb = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
-export const AuthController = { insertIntoDb };
+const SignInUser = catchAsync(async (req: Request, res: Response) => {
+  const result = await AuthService.SignInUser(req.body);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'user Login successfully',
+    data: {
+      accessToken: result.accessToken,
+    },
+  });
+});
+
+export const AuthController = { insertIntoDb, SignInUser };
