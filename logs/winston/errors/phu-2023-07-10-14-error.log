@@ -1,0 +1,5 @@
+Sat Oct 07 2023 14:57:1 } [PH] error: 
+Invalid `prisma.student.create()` invocation:
+
+
+Foreign key constraint failed on the field: `students_academicSemesterId_fkey (index)`
