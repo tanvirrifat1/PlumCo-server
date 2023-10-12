@@ -10,29 +10,59 @@ const insertIntoDb = catchAsync(async (req: Request, res: Response) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'user created',
+    message: 'user created successfully',
     data: result,
   });
 });
 
-// const insertIntoDb = async (
-//   req: Request,
-//   res: Response,
-//   next: NextFunction
-// ) => {
-//   try {
-//     const result = await UserService.insertIntoDb(req.body);
-//     res.send({
-//       statusCode: 200,
-//       message: 'created',
-//       success: true,
-//       data: result,
-//     });
-//   } catch (error) {
-//     next(error);
-//   }
-// };
+const getUserFromDb = catchAsync(async (req: Request, res: Response) => {
+  const result = await UserService.getUserFromDb(req.body);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'user fetched successfully',
+    data: result,
+  });
+});
+
+const getSingleData = catchAsync(async (req: Request, res: Response) => {
+  const result = await UserService.getSingleData(req.params.id);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'single user get successfully',
+    data: result,
+  });
+});
+
+const updateUser = catchAsync(async (req: Request, res: Response) => {
+  const result = await UserService.updateUser(req.params.id, req.body);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'user updated successfully',
+    data: result,
+  });
+});
+
+const deleteUser = catchAsync(async (req: Request, res: Response) => {
+  const result = await UserService.deleteUser(req.params.id);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'user deleted successfully',
+    data: result,
+  });
+});
 
 export const UserController = {
   insertIntoDb,
+  getUserFromDb,
+  getSingleData,
+  updateUser,
+  deleteUser,
 };
