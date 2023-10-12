@@ -16,6 +16,30 @@ const insertIntoDb = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+const getFromDb = catchAsync(async (req: Request, res: Response) => {
+  const result = await FaqService.getFromDb();
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Faq fetched successfully',
+    data: result,
+  });
+});
+
+const deleteData = catchAsync(async (req: Request, res: Response) => {
+  const result = await FaqService.deleteData(req.params.id);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Faq deleted successfully',
+    data: result,
+  });
+});
+
 export const FaqController = {
   insertIntoDb,
+  getFromDb,
+  deleteData,
 };
