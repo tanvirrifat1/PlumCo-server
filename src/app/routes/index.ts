@@ -1,6 +1,7 @@
 import express from 'express';
 import { AddToCartRouter } from '../modules/addToCart/addToCart.routes';
 import { AuthRoutes } from '../modules/auth/auth.route';
+import { BlogsRouter } from '../modules/blog/blog.routes';
 import { BookingRoutes } from '../modules/booking/booking.routes';
 import { FeedBackRouter } from '../modules/feedback/feedback.routes';
 import { ReviewRoutes } from '../modules/review/review.route';
@@ -37,6 +38,10 @@ const moduleRoutes = [
   {
     path: '/addToCart',
     route: AddToCartRouter,
+  },
+  {
+    path: '/blog',
+    route: BlogsRouter,
   },
 ];
 

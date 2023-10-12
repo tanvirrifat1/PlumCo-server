@@ -25,6 +25,7 @@ model User {
   Booking      Booking[]
   FeedBack     FeedBack[]
   AddToCart    AddToCart[]
+  Blog         Blog[]
 
   @@map("users")
 }
@@ -106,4 +107,26 @@ model AddToCart {
   Service Service @relation(fields: [serviceId], references: [id])
 
   @@map("addToCart")
+}
+
+model Blog {
+  id        String   @id @default(uuid())
+  title     String
+  content   String
+  publisher Boolean
+  authorId  String
+  author    User     @relation(fields: [authorId], references: [id])
+  image     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("blogs")
+}
+
+model Faq {
+  id       String @id @default(uuid())
+  answer   String
+  question String
+
+  @@map("faqs")
 }
