@@ -23,7 +23,7 @@ model User {
   updatedAt    DateTime @updatedAt
   Review       Review[]
 
-  @@map("user")
+  @@map("users")
 }
 
 enum Role {
@@ -42,17 +42,17 @@ model Service {
   updatedAt   DateTime @updatedAt
   Review      Review[]
 
-  @@map("service")
+  @@map("services")
 }
 
 model Review {
   id        String  @id @default(uuid())
-  userId    String // This represents a foreign key to the User model
+  userId    String
   user      User    @relation(fields: [userId], references: [id])
-  serviceId String // This represents a foreign key to the Service model
+  serviceId String
   service   Service @relation(fields: [serviceId], references: [id])
   review    String
-  rating    String
+  rating    Int
 
-  @@map("review")
+  @@map("reviews")
 }
