@@ -14,7 +14,7 @@ model User {
   id           String   @id @default(uuid())
   email        String   @unique
   password     String
-  role         String
+  role         Role     @default(user)
   contactNo    String
   fullName     String
   address      String
@@ -23,4 +23,22 @@ model User {
   updatedAt    DateTime @updatedAt
 
   @@map("user")
+}
+
+enum Role {
+  user
+  admin
+  super_admin
+}
+
+model Service {
+  id          String   @id @default(uuid())
+  title       String
+  description String
+  image       String?
+  price       String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("service")
 }
