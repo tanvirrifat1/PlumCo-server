@@ -20,4 +20,54 @@ const insertIntoDb = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
-export const BookingController = { insertIntoDb };
+const getAllBooks = catchAsync(async (req: Request, res: Response) => {
+  const token = req.headers.authorization as string;
+  console.log(token);
+
+  // Pass booking data to the function
+  const result = await BookingService.getAllBooks(token);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Booking fetched successfully',
+    data: result,
+  });
+});
+
+const getSingleBookeds = catchAsync(async (req: Request, res: Response) => {
+  const token = req.headers.authorization as string;
+  const { id } = req.params;
+
+  const result = await BookingService.getSingleBookeds(token, id);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Get single Booking successfully',
+    data: result,
+  });
+});
+
+const updateData = catchAsync(async (req: Request, res: Response) => {
+  const token = req.headers.authorization as string;
+
+  const bookingData = req.body;
+  const { id } = req.params;
+
+  const result = await BookingService.updateData(token, id, bookingData);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Booking successfully',
+    data: result,
+  });
+});
+
+export const BookingController = {
+  insertIntoDb,
+  getAllBooks,
+  getSingleBookeds,
+  updateData,
+};
