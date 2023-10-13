@@ -18,7 +18,6 @@ const create = z.object({
     address: z.string({
       required_error: 'address is required',
     }),
-    profileImage: z.string().optional(),
   }),
 });
 
@@ -30,7 +29,6 @@ const update = z.object({
     contactNo: z.string().optional(),
     fullName: z.string().optional(),
     location: z.string().optional(),
-    profileImage: z.string().optional(),
   }),
 });
 

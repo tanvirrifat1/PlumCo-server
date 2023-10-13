@@ -5,6 +5,7 @@ import { BlogsRouter } from '../modules/blog/blog.routes';
 import { BookingRoutes } from '../modules/booking/booking.routes';
 import { FaqRouter } from '../modules/faq/faq.routes';
 import { FeedBackRouter } from '../modules/feedback/feedback.routes';
+import { ProfileRoutes } from '../modules/profile/profile.routes';
 import { ReviewRoutes } from '../modules/review/review.route';
 import { ProductServiceRoutes } from '../modules/service/service.routes';
 import { UserRouter } from '../modules/user/user.routes';
@@ -47,6 +48,10 @@ const moduleRoutes = [
   {
     path: '/faq',
     route: FaqRouter,
+  },
+  {
+    path: '/profile',
+    route: ProfileRoutes,
   },
 ];
 
