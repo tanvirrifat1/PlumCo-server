@@ -37,12 +37,12 @@ const SignInUser = async (payload: ISignInData): Promise<ISignInResponse> => {
 
   const { id: userId, role } = isUserExist;
 
-  const token = jwtHelpers.createToken(
+  const accessToken = jwtHelpers.createToken(
     { userId, role },
     config.jwt.secret as Secret,
     config.jwt.expires_in as string
   );
-  return { token };
+  return { accessToken };
 };
 
 export const AuthService = { insertIntoDb, SignInUser };

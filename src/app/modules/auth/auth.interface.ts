@@ -4,5 +4,5 @@ export type ISignInData = {
 };
 
 export type ISignInResponse = {
-  token?: string;
+  accessToken?: string;
 };

@@ -130,3 +130,15 @@ model Faq {
 
   @@map("faqs")
 }
+
+model UpcomingService {
+  id          String   @id @default(uuid())
+  title       String
+  description String
+  image       String
+  price       String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("up_service")
+}
