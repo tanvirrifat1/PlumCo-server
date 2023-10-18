@@ -38,8 +38,20 @@ const deleteData = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+const getSingleData = catchAsync(async (req: Request, res: Response) => {
+  const result = await FeedBackService.getSingleData(req.params.id);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'FeedBack single retrived successfully',
+    data: result,
+  });
+});
+
 export const FeedBackController = {
   insertIntoDb,
   getDataFromDb,
   deleteData,
+  getSingleData,
 };

@@ -6,10 +6,11 @@ type IApiReponse<T> = {
   message?: string | null;
   meta?: {
     page: number;
-    limit: number;
+    size: number;
     total: number;
+    totalPage?: number;
   };
-  data?: T | null;
+  data: T | null | undefined;
 };
 
 const sendResponse = <T>(res: Response, data: IApiReponse<T>): void => {

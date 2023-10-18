@@ -21,4 +21,28 @@ const deleteData = async (id: string): Promise<Faq | null> => {
   return result;
 };
 
-export const FaqService = { insertIntoDb, getFromDb, deleteData };
+const getSingleData = async (id: string): Promise<Faq | null> => {
+  const result = await prisma.faq.findUnique({ where: { id } });
+
+  return result;
+};
+
+const updatedData = async (
+  id: string,
+  payload: Partial<Faq>
+): Promise<Faq | null> => {
+  const result = await prisma.faq.update({
+    where: { id },
+    data: payload,
+  });
+
+  return result;
+};
+
+export const FaqService = {
+  insertIntoDb,
+  getFromDb,
+  deleteData,
+  getSingleData,
+  updatedData,
+};

@@ -6,7 +6,9 @@ import sendResponse from '../../../shared/sendResponse';
 import { AddToCartService } from './addToCart.service';
 
 const insertIntoDb = catchAsync(async (req: Request, res: Response) => {
-  const result = await AddToCartService.insertIntoDb(req.body);
+  const token = req.headers.authorization as string;
+
+  const result = await AddToCartService.insertIntoDb(req.body, token);
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
@@ -17,7 +19,9 @@ const insertIntoDb = catchAsync(async (req: Request, res: Response) => {
 });
 
 const getAllData = catchAsync(async (req: Request, res: Response) => {
-  const result = await AddToCartService.getAllData();
+  const token = req.headers.authorization as string;
+
+  const result = await AddToCartService.getAllData(token);
 
   sendResponse(res, {
     statusCode: httpStatus.OK,

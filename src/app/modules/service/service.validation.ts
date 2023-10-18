@@ -18,8 +18,8 @@ const update = z.object({
   body: z.object({
     title: z.string().optional(),
     description: z.string().optional(),
-    role: z.string().optional(),
     price: z.string().optional(),
+    image: z.string().optional(),
   }),
 });
 

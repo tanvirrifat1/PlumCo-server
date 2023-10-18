@@ -10,6 +10,16 @@ router.post(
   auth(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.SUPER_ADMIN),
   FaqController.insertIntoDb
 );
+router.patch(
+  '/:id',
+  auth(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.SUPER_ADMIN),
+  FaqController.updatedData
+);
+router.get(
+  '/:id',
+  auth(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.SUPER_ADMIN),
+  FaqController.getSingleData
+);
 router.get('/', FaqController.getFromDb);
 router.delete(
   '/:id',

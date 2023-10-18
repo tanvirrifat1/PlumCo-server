@@ -10,6 +10,7 @@ router.delete(
   auth(ENUM_USER_ROLE.ADMIN),
   FeedBackController.deleteData
 );
+router.get('/:id', FeedBackController.getSingleData);
 router.post('/', FeedBackController.insertIntoDb);
 router.get('/', FeedBackController.getDataFromDb);
 

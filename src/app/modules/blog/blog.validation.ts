@@ -4,7 +4,7 @@ const create = z.object({
   body: z.object({
     title: z.string({ required_error: 'Title is Required!' }),
     content: z.string({ required_error: 'Content is Required!' }),
-    image: z.string({ required_error: 'Thumbnail is Required!' }),
+    image: z.string({ required_error: 'image is Required!' }),
     published: z
       .boolean({ required_error: 'published is Required!' })
       .optional(),

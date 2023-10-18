@@ -27,4 +27,18 @@ const deleteData = async (id: string): Promise<FeedBack | null> => {
   return result;
 };
 
-export const FeedBackService = { insertIntoDb, getDataFromDb, deleteData };
+const getSingleData = async (id: string): Promise<FeedBack | null> => {
+  const result = await prisma.feedBack.findUnique({
+    where: { id },
+    include: { Service: true, User: true },
+  });
+
+  return result;
+};
+
+export const FeedBackService = {
+  insertIntoDb,
+  getDataFromDb,
+  deleteData,
+  getSingleData,
+};
