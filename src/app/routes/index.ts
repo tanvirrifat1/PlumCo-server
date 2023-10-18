@@ -3,6 +3,7 @@ import { AddToCartRouter } from '../modules/addToCart/addToCart.routes';
 import { AuthRoutes } from '../modules/auth/auth.route';
 import { BlogsRouter } from '../modules/blog/blog.routes';
 import { BookingRoutes } from '../modules/booking/booking.routes';
+import { CategoryRoutes } from '../modules/category/category.routes';
 import { FaqRouter } from '../modules/faq/faq.routes';
 import { FeedBackRouter } from '../modules/feedback/feedback.routes';
 import { ProfileRoutes } from '../modules/profile/profile.routes';
@@ -52,6 +53,10 @@ const moduleRoutes = [
   {
     path: '/profile',
     route: ProfileRoutes,
+  },
+  {
+    path: '/category',
+    route: CategoryRoutes,
   },
 ];
 
