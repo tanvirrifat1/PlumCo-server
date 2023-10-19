@@ -17,7 +17,8 @@ const getUserFromDb = async (
   filters: IUserFilterRequest,
   options: IPaginationOptions
 ) => {
-  const { limit, page, skip } = paginationHelpers.calculatePagination(options);
+  const { size, limit, page, skip } =
+    paginationHelpers.calculatePagination(options);
 
   const { searchTerm, ...filterData } = filters;
 
@@ -65,6 +66,7 @@ const getUserFromDb = async (
       total,
       page,
       limit,
+      size,
     },
     data: result,
   };

@@ -6,21 +6,6 @@
     "auditLog": "C:\\projects\\university-management-core-service\\logs\\winston\\successes\\.783d0d9f13e9bf98fa22193a4f9476af28a1276b-audit.json",
     "files": [
         {
-            "date": 1696479810102,
-            "name": "C:\\projects\\university-management-core-service\\logs\\winston\\successes\\phu-2023-05-10-10-success.log",
-            "hash": "b53625c7257eb123670920312fd663c5f263401aa98d628bf9deab29f19843ee"
-        },
-        {
-            "date": 1696483933378,
-            "name": "C:\\projects\\university-management-core-service\\logs\\winston\\successes\\phu-2023-05-10-11-success.log",
-            "hash": "634adabe30832f60af6473c43a9fe17c3a967ce9af59d5fd8dadc99ce256fed9"
-        },
-        {
-            "date": 1696486041669,
-            "name": "C:\\projects\\university-management-core-service\\logs\\winston\\successes\\phu-2023-05-10-12-success.log",
-            "hash": "8cb9b552bc87cb43a162b3d6d7afd2fa7b3374586adccacc483063e61d3d8568"
-        },
-        {
             "date": 1696514779426,
             "name": "C:\\projects\\university-management-core-service\\logs\\winston\\successes\\phu-2023-05-10-20-success.log",
             "hash": "c4a2abffaa9e363da7a926568f95527bb6b310a2007ff71d952b208d2b430f20"
@@ -399,6 +384,21 @@
             "date": 1697687611526,
             "name": "C:\\projects\\university-management-core-service\\logs\\winston\\successes\\phu-2023-19-10-09-success.log",
             "hash": "e8240c8b4d81b2d3a280672f4dfc85a812009bceb8d61bbebb172fe749df9132"
+        },
+        {
+            "date": 1697700087901,
+            "name": "C:\\projects\\university-management-core-service\\logs\\winston\\successes\\phu-2023-19-10-13-success.log",
+            "hash": "2b17f979ba963e27e93447a0b7273e4dce298930e74ba8c874d087d5b92d2b7c"
+        },
+        {
+            "date": 1697702669302,
+            "name": "C:\\projects\\university-management-core-service\\logs\\winston\\successes\\phu-2023-19-10-14-success.log",
+            "hash": "c6f3d0bd17427b40663fb12d3e8cf2fa77e00cd9349b28c71dd18989cb3ca5b0"
+        },
+        {
+            "date": 1697711143386,
+            "name": "C:\\projects\\university-management-core-service\\logs\\winston\\successes\\phu-2023-19-10-16-success.log",
+            "hash": "651e4adbe4ca8d7144c1abb96ada81288a9f72a62ac9e2af14ac82a8dae03f0f"
         }
     ],
     "hashType": "sha256"
