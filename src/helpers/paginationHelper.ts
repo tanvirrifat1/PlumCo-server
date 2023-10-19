@@ -2,6 +2,7 @@ type IOptions = {
   page?: number;
   size?: number;
   sortBy?: string;
+  limit?: number;
   sortOrder?: string;
 };
 
@@ -11,6 +12,7 @@ type IOptionsResult = {
   skip: number;
   sortBy: string;
   sortOrder: string;
+  limit?: number;
 };
 
 const calculatePagination = (options: IOptions): IOptionsResult => {

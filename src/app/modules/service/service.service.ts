@@ -17,7 +17,7 @@ const getAllDataFromDb = async (
   filters: IServiceFilterRequest,
   options: IPaginationOptions
 ) => {
-  const { limit, page, skip } = paginationHelpers.calculatePagination(options);
+  const { size, page, skip } = paginationHelpers.calculatePagination(options);
 
   const { searchTerm, ...filterData } = filters;
 
@@ -50,7 +50,7 @@ const getAllDataFromDb = async (
   const result = await prisma.service.findMany({
     where: whereConditions,
     skip,
-    take: limit,
+    take: size,
     orderBy:
       options.sortBy && options.sortOrder
         ? { [options.sortBy]: options.sortOrder }
@@ -65,7 +65,7 @@ const getAllDataFromDb = async (
     meta: {
       total,
       page,
-      limit,
+      size,
     },
     data: result,
   };
@@ -100,10 +100,21 @@ const deleteData = async (id: string): Promise<Service> => {
   return result;
 };
 
+const getServiceByCategoryId = async (
+  categoryId: string
+): Promise<Service[] | null> => {
+  const result = await prisma.service.findMany({
+    where: { categoryId },
+    include: { category: true },
+  });
+  return result;
+};
+
 export const ProductService = {
   insertIntoDb,
   getAllDataFromDb,
   getSingleData,
   updateData,
   deleteData,
+  getServiceByCategoryId,
 };
