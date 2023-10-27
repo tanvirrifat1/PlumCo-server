@@ -11,8 +11,8 @@ const validateRequest_1 = __importDefault(require("../../middlewares/validateReq
 const blog_controller_1 = require("./blog.controller");
 const blog_validation_1 = require("./blog.validation");
 const router = express_1.default.Router();
-router.get('/', (0, auth_1.default)(user_1.ENUM_USER_ROLE.ADMIN, user_1.ENUM_USER_ROLE.SUPER_ADMIN, user_1.ENUM_USER_ROLE.USER), blog_controller_1.BlogController.getBlogs);
-router.get('/:id', (0, auth_1.default)(user_1.ENUM_USER_ROLE.ADMIN, user_1.ENUM_USER_ROLE.SUPER_ADMIN, user_1.ENUM_USER_ROLE.USER), blog_controller_1.BlogController.getBlog);
+router.get('/', blog_controller_1.BlogController.getBlogs);
+router.get('/:id', blog_controller_1.BlogController.getBlog);
 router.delete('/:id', (0, auth_1.default)(user_1.ENUM_USER_ROLE.ADMIN, user_1.ENUM_USER_ROLE.SUPER_ADMIN, user_1.ENUM_USER_ROLE.USER), blog_controller_1.BlogController.deleteBlog);
 router.post('/', (0, auth_1.default)(user_1.ENUM_USER_ROLE.ADMIN, user_1.ENUM_USER_ROLE.SUPER_ADMIN), (0, validateRequest_1.default)(blog_validation_1.BlogValidation.create), blog_controller_1.BlogController.insertIntoDB);
 router.patch('/:id', (0, auth_1.default)(user_1.ENUM_USER_ROLE.ADMIN, user_1.ENUM_USER_ROLE.SUPER_ADMIN), 
