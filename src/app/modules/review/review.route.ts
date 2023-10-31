@@ -15,6 +15,8 @@ router.post(
 
 router.get('/', ReviewController.getAllData);
 
+router.get('/:id', ReviewController.getSingleData);
+
 router.delete('/:id', auth(ENUM_USER_ROLE.ADMIN), ReviewController.deleteData);
 
 export const ReviewRoutes = router;

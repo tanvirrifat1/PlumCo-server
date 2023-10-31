@@ -33,4 +33,20 @@ const deleteData = async (id: string): Promise<Review> => {
   return result;
 };
 
-export const ReviewService = { insertIntoDb, getAllData, deleteData };
+const getSingleData = async (id: string): Promise<Review | null> => {
+  const result = await prisma.review.findUnique({
+    where: { id },
+    include: {
+      user: true,
+      service: true,
+    },
+  });
+  return result;
+};
+
+export const ReviewService = {
+  insertIntoDb,
+  getAllData,
+  deleteData,
+  getSingleData,
+};

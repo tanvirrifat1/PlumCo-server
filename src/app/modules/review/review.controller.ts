@@ -38,8 +38,20 @@ const deleteData = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+const getSingleData = catchAsync(async (req: Request, res: Response) => {
+  const result = await ReviewService.getSingleData(req.params.id);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'get single review successfully',
+    data: result,
+  });
+});
+
 export const ReviewController = {
   insertIntoDb,
   getAllData,
   deleteData,
+  getSingleData,
 };
