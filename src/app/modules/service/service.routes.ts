@@ -10,6 +10,7 @@ const router = express.Router();
 router.post(
   '/',
   auth(ENUM_USER_ROLE.ADMIN),
+
   validateRequest(ServiceValidation.create),
   ProductServiceController.insertIntoDb
 );

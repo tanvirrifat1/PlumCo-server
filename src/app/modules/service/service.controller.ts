@@ -12,21 +12,21 @@ const insertIntoDb = catchAsync(async (req: Request, res: Response) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'user created successfully',
+    message: 'service created successfully',
     data: result,
   });
 });
 
 const getAllDataFromDb = catchAsync(async (req: Request, res: Response) => {
   const filters = pick(req.query, serviceFilterableFields);
-  const options = pick(req.query, ['limit', 'page', 'sortBy', 'sortOrder']);
+  const options = pick(req.query, ['size', 'page', 'sortBy', 'sortOrder']);
 
   const result = await ProductService.getAllDataFromDb(filters, options);
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'user fetched successfully',
+    message: 'service fetched successfully',
     meta: result.meta,
     data: result.data,
   });

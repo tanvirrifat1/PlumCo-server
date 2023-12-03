@@ -44,8 +44,18 @@ const deleteData = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, voi
         data: result,
     });
 }));
+const getSingleData = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield review_service_1.ReviewService.getSingleData(req.params.id);
+    (0, sendResponse_1.default)(res, {
+        statusCode: http_status_1.default.OK,
+        success: true,
+        message: 'get single review successfully',
+        data: result,
+    });
+}));
 exports.ReviewController = {
     insertIntoDb,
     getAllData,
     deleteData,
+    getSingleData,
 };

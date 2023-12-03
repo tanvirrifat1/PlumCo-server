@@ -43,4 +43,19 @@ const deleteData = (id) => __awaiter(void 0, void 0, void 0, function* () {
     });
     return result;
 });
-exports.ReviewService = { insertIntoDb, getAllData, deleteData };
+const getSingleData = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield prisma_1.default.review.findUnique({
+        where: { id },
+        include: {
+            user: true,
+            service: true,
+        },
+    });
+    return result;
+});
+exports.ReviewService = {
+    insertIntoDb,
+    getAllData,
+    deleteData,
+    getSingleData,
+};
