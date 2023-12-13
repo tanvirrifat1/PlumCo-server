@@ -11,7 +11,7 @@ const validateRequest_1 = __importDefault(require("../../middlewares/validateReq
 const service_controller_1 = require("./service.controller");
 const service_validation_1 = require("./service.validation");
 const router = express_1.default.Router();
-router.post('/', (0, auth_1.default)(user_1.ENUM_USER_ROLE.ADMIN), (0, validateRequest_1.default)(service_validation_1.ServiceValidation.create), service_controller_1.ProductServiceController.insertIntoDb);
+router.post('/', (0, auth_1.default)(user_1.ENUM_USER_ROLE.ADMIN, user_1.ENUM_USER_ROLE.SUPER_ADMIN), (0, validateRequest_1.default)(service_validation_1.ServiceValidation.create), service_controller_1.ProductServiceController.insertIntoDb);
 router.get('/category/:categoryId', service_controller_1.ProductServiceController.getServiceByCategoryId);
 router.get('/:id', service_controller_1.ProductServiceController.getSingleData);
 router.patch('/:id', (0, validateRequest_1.default)(service_validation_1.ServiceValidation.update), service_controller_1.ProductServiceController.updateData);

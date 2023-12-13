@@ -17,6 +17,10 @@ router.get('/', ReviewController.getAllData);
 
 router.get('/:id', ReviewController.getSingleData);
 
-router.delete('/:id', auth(ENUM_USER_ROLE.ADMIN), ReviewController.deleteData);
+router.delete(
+  '/:id',
+  auth(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.SUPER_ADMIN),
+  ReviewController.deleteData
+);
 
 export const ReviewRoutes = router;

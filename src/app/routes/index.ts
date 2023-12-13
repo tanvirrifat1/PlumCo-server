@@ -1,4 +1,5 @@
 import express from 'express';
+import { upcomingRoutes } from '../modules/UpcomingService/upcoming.routes';
 import { AddToCartRouter } from '../modules/addToCart/addToCart.routes';
 import { AuthRoutes } from '../modules/auth/auth.route';
 import { BlogsRouter } from '../modules/blog/blog.routes';
@@ -57,6 +58,10 @@ const moduleRoutes = [
   {
     path: '/category',
     route: CategoryRoutes,
+  },
+  {
+    path: '/upcoming',
+    route: upcomingRoutes,
   },
 ];
 
