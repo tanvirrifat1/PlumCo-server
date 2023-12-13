@@ -14,6 +14,30 @@ const insertIntoDb = async (req: Request, res: Response) => {
   });
 };
 
+const getAllData = async (req: Request, res: Response) => {
+  const result = await upcomingService.getAllData();
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'upcoming service fetched successfully',
+    data: result,
+  });
+};
+
+const getOneData = async (req: Request, res: Response) => {
+  const result = await upcomingService.getOneData(req.params.id);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'single upcoming service fetched successfully',
+    data: result,
+  });
+};
+
 export const upcomingController = {
   insertIntoDb,
+  getAllData,
+  getOneData,
 };
