@@ -97,6 +97,7 @@ const deleteData = async (id: string): Promise<Service> => {
       id,
     },
   });
+
   return result;
 };
 

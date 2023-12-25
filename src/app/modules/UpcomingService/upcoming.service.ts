@@ -78,8 +78,28 @@ const getOneData = async (id: string): Promise<UpcomingService | null> => {
   return result;
 };
 
+const deleteData = async (id: string): Promise<UpcomingService | null> => {
+  const result = await prisma.upcomingService.delete({
+    where: { id },
+  });
+  return result;
+};
+
+const updateData = async (
+  id: string,
+  data: Partial<UpcomingService>
+): Promise<UpcomingService | null> => {
+  const result = await prisma.upcomingService.update({
+    where: { id },
+    data: data,
+  });
+  return result;
+};
+
 export const upcomingService = {
   insertIntoDb,
   getAllData,
   getOneData,
+  updateData,
+  deleteData,
 };

@@ -6,17 +6,17 @@ import config from '../../../config';
 import ApiError from '../../../errors/ApiError';
 import { jwtHelpers } from '../../../helpers/jwtHelpers';
 import prisma from '../../../shared/prisma';
-import { ISignInData, ISignInResponse } from './auth.interface';
+import { ISignInData } from './auth.interface';
 
 const insertIntoDb = async (data: User) => {
-  const hashPass = await bcrypt.hash(data.password, 12);
+  const hashPass = await bcrypt.hash(data?.password as string, 12);
   data.password = hashPass;
 
   const result = await prisma.user.create({ data });
   return result;
 };
 
-const SignInUser = async (payload: ISignInData): Promise<ISignInResponse> => {
+const SignInUser = async (payload: ISignInData) => {
   const { email, password } = payload;
 
   const isUserExist = await prisma.user.findUnique({

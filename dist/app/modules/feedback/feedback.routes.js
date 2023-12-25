@@ -9,7 +9,7 @@ const user_1 = require("../../../enums/user");
 const auth_1 = __importDefault(require("../../middlewares/auth"));
 const feedback_controller_1 = require("./feedback.controller");
 const router = express_1.default.Router();
-router.delete('/:id', (0, auth_1.default)(user_1.ENUM_USER_ROLE.ADMIN), feedback_controller_1.FeedBackController.deleteData);
+router.delete('/:id', (0, auth_1.default)(user_1.ENUM_USER_ROLE.ADMIN, user_1.ENUM_USER_ROLE.SUPER_ADMIN), feedback_controller_1.FeedBackController.deleteData);
 router.get('/:id', feedback_controller_1.FeedBackController.getSingleData);
 router.post('/', feedback_controller_1.FeedBackController.insertIntoDb);
 router.get('/', feedback_controller_1.FeedBackController.getDataFromDb);

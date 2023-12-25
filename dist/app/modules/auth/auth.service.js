@@ -20,7 +20,7 @@ const ApiError_1 = __importDefault(require("../../../errors/ApiError"));
 const jwtHelpers_1 = require("../../../helpers/jwtHelpers");
 const prisma_1 = __importDefault(require("../../../shared/prisma"));
 const insertIntoDb = (data) => __awaiter(void 0, void 0, void 0, function* () {
-    const hashPass = yield bcrypt_1.default.hash(data.password, 12);
+    const hashPass = yield bcrypt_1.default.hash(data === null || data === void 0 ? void 0 : data.password, 12);
     data.password = hashPass;
     const result = yield prisma_1.default.user.create({ data });
     return result;

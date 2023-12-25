@@ -41,8 +41,32 @@ const getOneData = async (req: Request, res: Response) => {
   });
 };
 
+const deleteData = async (req: Request, res: Response) => {
+  const result = await upcomingService.deleteData(req.params.id);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: ' upcoming service Deleted successfully',
+    data: result,
+  });
+};
+
+const updateData = async (req: Request, res: Response) => {
+  const result = await upcomingService.updateData(req.params.id, req.body);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'upcoming service updated successfully',
+    data: result,
+  });
+};
+
 export const upcomingController = {
   insertIntoDb,
   getAllData,
   getOneData,
+  updateData,
+  deleteData,
 };
