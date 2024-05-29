@@ -9,7 +9,6 @@ const insertIntoDb = async (data: Service): Promise<Service> => {
   const result = await prisma.service.create({
     data,
   });
-
   return result;
 };
 

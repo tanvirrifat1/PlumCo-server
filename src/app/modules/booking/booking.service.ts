@@ -20,7 +20,7 @@ const insertIntoDb = async (token: string, data: Booking): Promise<Booking> => {
   const user = jwtHelpers.verifyToken(token, config.jwt.secret as Secret);
 
   if (!user) {
-    throw new ApiError(httpStatus.NOT_FOUND, 'user not found');
+    throw new ApiError(httpStatus.NOT_FOUND, 'user not found!');
   }
 
   if (!data.userId) {
